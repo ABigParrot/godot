@@ -5,11 +5,26 @@ const SPEED = 5.0
 const JUMP_VELOCITY = 4.5
 const sensitivity = 0.2
 
+func _ready ():
+	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+
 func _unhandled_input(event):
 	if event is InputEventMouseMotion:
 		rotation_degrees.y -= event.relative.x * sensitivity
+		%Head.rotation_degrees.x -= event.relative.y * sensitivity
+		%Head.rotation_degrees.x = clamp(
+			%Head.rotation_degrees.x,-70.0,70.0
+			)
+	if event.is_action_pressed("click"):
+		Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+		
+	if event.is_action_pressed("escape"):
+		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+	
 
 func _physics_process(delta: float) -> void:
+
+	
 	# Add the gravity.
 	if not is_on_floor():
 		velocity += get_gravity() * delta
@@ -17,6 +32,7 @@ func _physics_process(delta: float) -> void:
 	# Handle jump.
 	if Input.is_action_just_pressed("jump") and is_on_floor():
 		velocity.y = JUMP_VELOCITY
+		Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
