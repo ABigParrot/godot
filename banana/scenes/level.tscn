@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://c271c8vrv6skv"]
+
+[sub_resource type="Environment" id="Environment_hx2jy"]
+background_mode = 1
+background_color = Color(0.78949916, 0.67509323, 3.85046e-07, 1)
+
+[node name="Level" type="Node3D" unique_id=1908332970]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=837769093]
+environment = SubResource("Environment_hx2jy")
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=612157790]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.80998206)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=284009107]
+transform = Transform3D(1, 0, 0, 0, 0.5329672, 0.8461359, 0, -0.8461359, 0.5329672, 0, 0.96782863, 0)
