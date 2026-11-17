@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://cfoes10unb350"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_hx2jy"]
+size = Vector3(0.3, 0.3, 1.3000001)
+
+[node name="Gun" type="Node3D" unique_id=79404633]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=889914]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.9802322e-08, -0.050000012, 0.65000004)
+mesh = SubResource("BoxMesh_hx2jy")
+
+[node name="muzzle" type="Node3D" parent="." unique_id=1350367953]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.3)

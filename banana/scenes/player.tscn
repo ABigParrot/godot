@@ -1,6 +1,8 @@
 [gd_scene format=3 uid="uid://bxvy1gdhssbx4"]
 
 [ext_resource type="Script" uid="uid://dkcgxib0mqakb" path="res://scenes/player.gd" id="1_3vyb7"]
+[ext_resource type="Texture2D" uid="uid://b0tte2hxn46co" path="res://images/reticle.png" id="2_g2els"]
+[ext_resource type="PackedScene" uid="uid://cfoes10unb350" path="res://scenes/gun.tscn" id="2_qhqgy"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_hx2jy"]
 
@@ -21,4 +23,22 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.7, 0)
 
 [node name="Camera3D" type="Camera3D" parent="Head" unique_id=562945777]
 unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.8, 0.20000005, 1.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.2028067, 0.50000006, 1.7)
+
+[node name="Gun" parent="Head" unique_id=79404633 instance=ExtResource("2_qhqgy")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0.6, -0.49999997, -2.9802322e-08)
+
+[node name="Reticle" type="TextureRect" parent="." unique_id=1875196486]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -31.0
+offset_top = -32.120483
+offset_right = 31.0
+offset_bottom = 32.120483
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_g2els")
+expand_mode = 1
