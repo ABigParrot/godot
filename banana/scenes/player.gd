@@ -34,6 +34,9 @@ func _physics_process(delta: float) -> void:
 		velocity.y = JUMP_VELOCITY
 		Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 
+	elif Input.is_action_just_released("jump") and velocity.y > 0.0:
+		velocity.y = 0.0
+	
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
 	var input_dir := Input.get_vector("left", "right", "forward", "back")
