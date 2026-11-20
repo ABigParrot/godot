@@ -3,10 +3,14 @@ extends CharacterBody3D
 
 const SPEED = 5.0
 const JUMP_VELOCITY = 4.5
+const DOUBLE_JUMP_VELOCITY = 7
 const sensitivity = 0.2
+
+var jump_count = 2
 
 func _ready ():
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+	jump_count = 0
 
 func _unhandled_input(event):
 	if event is InputEventMouseMotion:
@@ -36,6 +40,7 @@ func _physics_process(delta: float) -> void:
 
 	elif Input.is_action_just_released("jump") and velocity.y > 0.0:
 		velocity.y = 0.0
+		
 	
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
@@ -50,8 +55,25 @@ func _physics_process(delta: float) -> void:
 			
 	if Input.is_action_pressed("click"):
 		shoot()
-
+		
 	move_and_slide()
 
 func shoot():
 	print("doot")
+
+
+### Extra Code ###
+#
+	#if Input.is_action_just_pressed("jump") and is_on_floor() and jump_count == 0:
+		#jump_count += 1
+		#velocity.y = JUMP_VELOCITY
+		#Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+#
+	#elif Input.is_action_just_pressed("jump") and jump_count > 0:
+		#velocity.y = DOUBLE_JUMP_VELOCITY
+#
+	#elif Input.is_action_just_released("jump") and velocity.y > 0.0 and jump_count > 1:
+		#jump_count = 0
+		#velocity.y = 0.0
+		#
+### Extra Code ###

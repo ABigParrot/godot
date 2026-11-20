@@ -1,0 +1,8 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://cjj8u4asoipbm"]
+
+[ext_resource type="Texture2D" uid="uid://dlchy8tx60any" path="res://images/noisy-background_1194-7547.jpg" id="1_77y44"]
+
+[resource]
+albedo_color = Color(0.9999996, 0.5800872, 0.21104968, 1)
+albedo_texture = ExtResource("1_77y44")
+uv1_scale = Vector3(4.305, 4.305, 4.305)

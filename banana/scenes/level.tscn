@@ -1,10 +1,56 @@
 [gd_scene format=3 uid="uid://c271c8vrv6skv"]
 
 [ext_resource type="PackedScene" uid="uid://bxvy1gdhssbx4" path="res://scenes/player.tscn" id="1_2q6dc"]
+[ext_resource type="Material" uid="uid://cjj8u4asoipbm" path="res://materials/platform_material.tres" id="1_w7c3h"]
+[ext_resource type="PackedScene" uid="uid://bx86hsjledmbl" path="res://scenes/environment/floating_platform.tscn" id="3_w8frs"]
 
 [sub_resource type="Environment" id="Environment_hx2jy"]
 background_mode = 1
-background_color = Color(0.4934638, 0.70973146, 1.1551381e-06, 1)
+background_color = Color(0.9850399, 0.74755013, 1.540184e-06, 1)
+fog_enabled = true
+fog_light_color = Color(5.0055983e-06, 0.6696827, 0.7237173, 1)
+fog_light_energy = 1.2
+fog_density = 0.0
+fog_height = 4.0
+fog_height_density = 0.09
+
+[sub_resource type="Animation" id="Animation_w8frs"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(9.47863, 3.4917178, -24.88409)]
+}
+
+[sub_resource type="Animation" id="Animation_mx8sn"]
+resource_name = "move"
+length = 9.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 4.5, 9),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(9.47863, 3.4917178, -24.88409), Vector3(17.77863, 9.091718, -24.88409), Vector3(9.47863, 3.4917178, -24.88409)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ppgk2"]
+_data = {
+&"RESET": SubResource("Animation_w8frs"),
+&"move": SubResource("Animation_mx8sn")
+}
 
 [node name="Level" type="Node3D" unique_id=1908332970]
 
@@ -12,12 +58,46 @@ background_color = Color(0.4934638, 0.70973146, 1.1551381e-06, 1)
 environment = SubResource("Environment_hx2jy")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=284009107]
-transform = Transform3D(1, 0, 0, 0, 0.5329672, 0.8461359, 0, -0.8461359, 0.5329672, 0, 0.96782863, 0)
+transform = Transform3D(1, 0, 0, 0, 0.038495183, 0.9992588, 0, -0.9992588, 0.038495183, 0, 0.96782863, 0)
 
-[node name="CSGBox3D" type="CSGBox3D" parent="." unique_id=1473735028]
-transform = Transform3D(2.6, 0, 0, 0, 0.19999999, 0, 0, 0, 2.4, -1.1699998, -11.785324, -0.1017704)
+[node name="Platform" type="CSGBox3D" parent="." unique_id=1473735028]
+transform = Transform3D(2.6, 0, 0, 0, 0.19999999, 0, 0, 0, 2.4, -1.1699998, -30.93532, -0.1017704)
 use_collision = true
-size = Vector3(5.9, 118.4, 10.1)
+size = Vector3(5.9, 333.9, 10.1)
+material = ExtResource("1_w7c3h")
+
+[node name="Platform2" type="CSGBox3D" parent="." unique_id=1524980918]
+transform = Transform3D(2.6, 0, 0, 0, 0.19999999, 0, 0, 0, 2.4, 29.029999, -27.175325, -22.801771)
+use_collision = true
+size = Vector3(5.9, 358.30002, 10.1)
+material = ExtResource("1_w7c3h")
+
+[node name="Platform3" type="CSGBox3D" parent="." unique_id=1630393782]
+transform = Transform3D(-1.13649605e-07, 0, 2.4, 0, 0.19999999, 0, -2.5999997, 0, -1.0490733e-07, 23.529999, -20.885324, 1.398228)
+use_collision = true
+size = Vector3(5.9, 253.40001, 10.1)
+material = ExtResource("1_w7c3h")
+
+[node name="Platform4" type="CSGBox3D" parent="." unique_id=2018617441]
+transform = Transform3D(-1.13649605e-07, 0, 1.44, 0, 0.19999999, 0, -2.5999997, 0, -6.29444e-08, 0.42999792, -48.325317, -25.601772)
+use_collision = true
+size = Vector3(5.9, 526.8, 10.1)
+material = ExtResource("1_w7c3h")
 
 [node name="Player" parent="." unique_id=1534533953 instance=ExtResource("1_2q6dc")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.1, 1.4, 0.3)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.1, 8.9, 0.3)
+
+[node name="FloatingPlatform" parent="." unique_id=878443533 instance=ExtResource("3_w8frs")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.17863, 3.4917178, 2.015911)
+
+[node name="FloatingPlatform2" parent="." unique_id=1948985452 instance=ExtResource("3_w8frs")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 1.8786297, 3.4917178, -14.484089)
+
+[node name="FloatingPlatform3" parent="." unique_id=1165604571 instance=ExtResource("3_w8frs")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.47863, 3.4917178, -24.88409)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="FloatingPlatform3" unique_id=1024237478]
+libraries/ = SubResource("AnimationLibrary_ppgk2")
+autoplay = &"move"
+
+[editable path="FloatingPlatform3"]

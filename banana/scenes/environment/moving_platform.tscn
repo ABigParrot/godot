@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://5ayb7p040t15"]
+
+[ext_resource type="Texture2D" uid="uid://dlchy8tx60any" path="res://images/noisy-background_1194-7547.jpg" id="1_xg5am"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_w7c3h"]
+albedo_color = Color(0, 0.82741266, 0.07570512, 1)
+albedo_texture = ExtResource("1_xg5am")
+
+[node name="FloatingPlatform" type="Node3D" unique_id=878443533]
+
+[node name="CSGBox3D" type="CSGBox3D" parent="." unique_id=1677226645]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.05000013, -0.15, -9.685755e-08)
+use_collision = true
+size = Vector3(2.3, 0.3, 4)
+material = SubResource("StandardMaterial3D_w7c3h")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1050482030]

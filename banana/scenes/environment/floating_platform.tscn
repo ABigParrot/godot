@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://bx86hsjledmbl"]
+
+[ext_resource type="Texture2D" uid="uid://dlchy8tx60any" path="res://images/noisy-background_1194-7547.jpg" id="1_gkvti"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_w8frs"]
+rough = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_w7c3h"]
+albedo_color = Color(0.9583352, 0.8865492, 0, 1)
+albedo_texture = ExtResource("1_gkvti")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_hx2jy"]
+size = Vector3(2.3, 0.3, 4)
+
+[node name="FloatingPlatform" type="AnimatableBody3D" unique_id=1165604571]
+physics_material_override = SubResource("PhysicsMaterial_w8frs")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="." unique_id=1677226645]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.05000013, -0.15, -9.685755e-08)
+use_collision = true
+size = Vector3(2.3, 0.3, 4)
+material = SubResource("StandardMaterial3D_w7c3h")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1734919803]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.05000007, -0.15, 0)
+shape = SubResource("BoxShape3D_hx2jy")
